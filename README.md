@@ -1,13 +1,22 @@
 # paginated_consumer
-paginated_consumer is a flutter packge that allows you to enable easy pagintion if you already have a project that is based on provider state management. 
 
-This packge combines the provider packge and pull_to_refresh package to provide the seamless integration of the Pagination.
+[![pub](https://img.shields.io/pub/v/paginated_consumer?style=plastic)](https://pub.dev/packages/paginated_consumer)
+
+paginated_consumer is a flutter package that allows you to enable easy pagination if you already have a project that is based on provider state management. 
+
+This package combines the provider package and pull_to_refresh package to provide the seamless integration of the Pagination.
+
+
+
+![working](screenshots/paginated_consumer.gif)
+
+
 ## Installation
 
-Use flutter pub to install paginated_consumer.
+Use flutter pub to install **paginated_consumer**.
 
 ```dart
-paginated_consumer : 0.0.1
+paginated_consumer : 0.0.2
 ```
 
 ## Usage
@@ -67,3 +76,4 @@ Pull requests are welcome. For major changes, please you can create an issue to 
 
 ## License
 [MIT](https://github.com/subeg7/Paginated-Consumer/blob/master/LICENSE)
+**Free Software, Hell Yeah!**
