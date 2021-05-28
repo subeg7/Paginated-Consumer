@@ -18,10 +18,4 @@ class PassengerProvider extends PaginationProvider<PassengerResponseModel> {
   Future<List<PassengerResponseModel>> fetchByPage(
           {int page, int pageSize}) async =>
       await _repository.getPassengers(page: page, pageSize: pageSize);
-
-  // await Future.delayed(
-  //   Duration(seconds: 2),
-  //   () => throw Exception("Error"),
-  // );
-
 }
