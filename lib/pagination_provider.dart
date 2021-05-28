@@ -8,6 +8,7 @@ abstract class PaginationProvider<T> extends ChangeNotifier {
   PaginationProvider() {
     _sizePerPage = defaultSizePerPage;
     _currentpage = defaultCurrentPage;
+    _initialPage = _currentpage;
     refreshController =
         RefreshController(initialRefresh: defaultInitialRefresh);
   }
@@ -17,12 +18,14 @@ abstract class PaginationProvider<T> extends ChangeNotifier {
     PaginationInitialOption initialOption,
   ) {
     _currentpage = initialOption.initialPage ?? defaultCurrentPage;
+    _initialPage = _currentpage;
     refreshController = RefreshController(
         initialRefresh: initialOption.initialRefresh ?? defaultInitialRefresh);
     _sizePerPage = initialOption.sizePerPage ?? defaultSizePerPage;
   }
 
   int _currentpage;
+  int _initialPage;
   int _sizePerPage;
   RefreshController refreshController;
 
@@ -38,7 +41,8 @@ abstract class PaginationProvider<T> extends ChangeNotifier {
 
   void onRefresh() {
     _dataList.clear();
-    fetchAndSetRefresher(page: 1);
+    refreshController.resetNoData();
+    fetchAndSetRefresher(page: _initialPage);
   }
 
   void onLoadMore() => fetchAndSetRefresher(page: _nextPage);
@@ -70,21 +74,21 @@ abstract class PaginationProvider<T> extends ChangeNotifier {
   }
 
   setApiFailedRefresher() {
-    if (_currentpage == 1)
+    if (_currentpage == _initialPage)
       refreshController.refreshFailed();
     else
       refreshController.loadFailed();
   }
 
   _setRefresherCompleteWithData() {
-    if (_currentpage == 1)
+    if (_currentpage == _initialPage)
       refreshController.refreshCompleted();
     else
       refreshController.loadComplete();
   }
 
   _setRefresherEmptyWithNoData() {
-    if (_currentpage == 1)
+    if (_currentpage == _initialPage)
       refreshController.refreshCompleted();
     else
       refreshController.loadNoData();
@@ -92,7 +96,13 @@ abstract class PaginationProvider<T> extends ChangeNotifier {
 }
 
 class PaginationInitialOption {
-  int initialPage = defaultCurrentPage;
-  int sizePerPage = defaultSizePerPage;
-  bool initialRefresh = defaultInitialRefresh;
+  final int initialPage;
+  final int sizePerPage;
+  final bool initialRefresh;
+
+  PaginationInitialOption({
+    this.initialPage = defaultCurrentPage,
+    this.sizePerPage = defaultSizePerPage,
+    this.initialRefresh = defaultInitialRefresh,
+  });
 }
