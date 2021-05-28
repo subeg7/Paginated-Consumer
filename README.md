@@ -8,7 +8,6 @@ This package combines the provider package and pull_to_refresh package to provid
 
 
 
-![working](screenshots/paginated_consumer.gif)
 
 
 ## Installation
@@ -70,6 +69,9 @@ Notice the 'dataList' object. This is the list of paginated data of type that wa
 
 
 #### Now the list view screen is ready for pull down and pull ups for refresh and load more data respectively.
+
+
+![working](screenshots/paginated_consumer.gif)
 
 ## Contributing
 Pull requests are welcome. For major changes, please you can create an issue to discuss what you would like to change.

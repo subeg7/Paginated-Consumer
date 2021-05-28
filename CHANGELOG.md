@@ -1,3 +1,7 @@
+## [0.0.3]
+
+* Improved description
+
 ## [0.0.2]
 
 * Revamped example
