@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import 'abstract_pagination_provider.dart';
+import 'pagination_provider.dart';
 
 class PaginatedConsumer<T> extends StatelessWidget {
   final Function builder;

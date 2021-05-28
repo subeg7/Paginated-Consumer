@@ -29,7 +29,7 @@ abstract class PaginationProvider<T> extends ChangeNotifier {
   int get _nextPage =>
       _currentpage + 1; // page is only updated if the api hit was successful
   List<T> _dataList = [];
-  List<T> get dataList => List.unmodifiable(dataList);
+  List<T> get dataList => List.unmodifiable(_dataList);
   List<T> _newPageItems = [];
   List<T> get newPageItems => List.unmodifiable(_newPageItems);
 
@@ -37,7 +37,7 @@ abstract class PaginationProvider<T> extends ChangeNotifier {
   Future<List<T>> fetchByPage({@required int page, @required int pageSize});
 
   void onRefresh() {
-    dataList.clear();
+    _dataList.clear();
     fetchAndSetRefresher(page: 1);
   }
 
